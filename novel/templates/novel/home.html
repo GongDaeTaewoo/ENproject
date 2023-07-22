@@ -1,0 +1,32 @@
+{% extends 'novel/base.html' %}
+{% load static %}
+
+{% block title %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css'%}">
+    <title>ai를 이용한 소설창작 사이트</title>
+{% endblock %}
+
+{% block body %}
+    <div class="explain">
+        <p>
+            엑셀런트 노벨은 AI를 이용해
+            <br>
+            간단히 줄거리, 등장인물들을 입력하면
+            <br>
+            당신만의 소설을 만들수 있는 사이트입니다.
+            <br>
+            지금 시작해보세요.
+        </p>
+    </div>
+    <div class="nowstart">
+        <h2>바로 시작하기</h2>
+        <a class="btn btn-primary" href="{% url 'novel:novel_create' %}">시작하기</a>
+    </div>
+
+    <div class="maked_novel">
+        <p>만들어진 소설 수:{{ num }}개</p>
+    </div>
+    <div class="my_name">
+        <p>GongDaeTaewoo</p>
+    </div>
+{% endblock %}

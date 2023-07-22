@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% extends 'novel/base.html' %}
+{% load django_bootstrap5 %}
+{% load static %}
+<html lang="en">
+
+<head>
+    {% block title %}
+        <meta charset="UTF-8">
+        <title>일단 시험</title>
+        <style>
+            p#novel_answer {
+                font-family: Humanbumsuk;
+                font-size: 20px;
+                text-align: center;
+            }
+        </style>
+    {% endblock %}
+</head>
+
+
+{% block body %}
+    <div class="text-center">
+        <h1>당신만의 소설을 AI를 이용해 창조해보세요!</h1>
+        <p style="color: #b02a37" class="h5">설정</p>
+        <img width="200px" height="200px" src="{% static 'novel/pen.jpg' %}" class="text-center">
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <button class="btn btn-primary" type="submit">
+                제출
+            </button>
+        </form>
+        <p>주의:줄거리는 필수 입력사항입니다. <br>
+            등장인물을 설정하지 않으실려면 성별에서 등장시키지 않음을 선택해주세요.</p>
+        <p id="novel_answer">
+            {{ answer.answer_text }}
+        </p>
+    </div>
+{% endblock %}
+
+</html>

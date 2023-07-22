@@ -1,0 +1,31 @@
+{% extends 'novel/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block title %}
+        <meta charset="UTF-8">
+        <title>Title</title>
+    {% endblock %}
+</head>
+
+<body>
+{% block body %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th scope="col">내용</th>
+            <th>장르</th>
+        </tr>
+        </thead>
+    {% for novel in novels %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ novel.answer_text | slice:":4" }}</td>
+                <td>{{ novel.novel_infor.genre }}</td>
+            </tr>
+    {% endfor %}
+    </table>
+{% endblock %}
+</body>
+</html>

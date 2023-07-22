@@ -1,0 +1,42 @@
+@font-face {
+    font-family: 'Humanbumsuk';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/Humanbumsuk.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+.right {
+    display: flex;
+    justify-content: right!important;
+}
+
+body{
+    background-color: #f5f5dc;
+}
+.explain{
+    font-family: Humanbumsuk;
+    font-size:50px;
+    text-align:center;
+
+}
+
+.nowstart{
+    padding-top:30px;
+    border-top:4px solid black;
+    text-align: center;
+}
+.nowstart h2{
+    font-size:50px;
+}
+
+
+.maked_novel{
+    margin-top:30px;
+    text-align: center;
+}
+
+.maked_novel p {
+    font-size:20px;
+}
+.my_name{
+    text-align: center;
+}
