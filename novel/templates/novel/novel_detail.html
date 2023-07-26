@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% extends 'novel/base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+    <style>
+    .right{
+        display:flex;
+        justify-content: right;
+    }
+    </style>
+    <title>소설 {{ novel.pk }}번</title>
+{% endblock %}
+
+{% block body %}
+    <h1>{{ novel.pk }} 번째 소설</h1>
+    <img src="{{ novel.image }}">
+    <img src="{{ novel.image2 }}">
+    <img src="{{ novel.image3 }}">
+    <p>장르:{{ novel.novel_infor.genre }}</p>
+
+    {% if novel.novel_infor.char_sex1 != '등장시키지 않음' and novel.novel_infor.char_sex2 == '등장시키지 않음' %}
+        <p>등장인물1</p>
+        <ul>
+            <li>나이:{{ novel.novel_infor.char_age1 }}</li>
+            <li>성별:{{ novel.novel_infor.char_sex1 }}</li>
+            <li>성격:{{ novel.novel_infor.char_per1 }}</li>
+        </ul>
+    {% elif novel.novel_infor.char_sex1 == '등장시키지 않음' and novel.novel_infor.char_sex2 != '등장시키지 않음' %}
+        <p>등장인물1</p>
+        <ul>
+            <li>나이:{{ novel.novel_infor.char_age2 }}</li>
+            <li>성별:{{ novel.novel_infor.char_sex2 }}</li>
+            <li>성격:{{ novel.novel_infor.char_per2 }}</li>
+        </ul>
+    {% elif novel.novel_infor.char_sex1 == '등장시키지 않음' and novel.novel_infor.char_sex2 == '등장시키지 않음' %}
+        <p>설정된 등장인물 없음</p>
+    {% else %}
+        <p>등장인물1</p>
+        <ul>
+            <li>나이:{{ novel.novel_infor.char_age1 }}</li>
+            <li>성별:{{ novel.novel_infor.char_sex1 }}</li>
+            <li>성격:{{ novel.novel_infor.char_per1 }}</li>
+        </ul>
+        <p>등장인물2</p>
+        <ul>
+            <li>나이:{{ novel.novel_infor.char_age2 }}</li>
+            <li>성별:{{ novel.novel_infor.char_sex2 }}</li>
+            <li>성격:{{ novel.novel_infor.char_per2 }}</li>
+        </ul>
+    {% endif %}
+    <p>줄거리:{{ novel.novel_infor.story }}</p>
+
+    <p>만들어진 소설:{{ novel.answer_text }}</p>
+
+
+
+    <h3>댓글</h3>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button class="btn btn-outline-secondary" type="submit">
+            댓글작성
+        </button>
+        <h4>작성된 댓글들</h4>
+    </form>
+    {% for comment in comments %}
+        {% if comment.author %}
+            <p>{{ comment.author }}</p>
+        {% else %}
+            <p>익명</p>
+        {% endif %}
+        <p>{{ comment.changed_date }}</p>
+        <p>{{ comment.content }}</p>
+    {% endfor %}
+    <a class="btn btn-primary" href="{% url 'novel:novel_list' %}">돌아가기</a>
+    <a class="btn btn-success" href="{% url 'novel:recommend' novel.pk %}">게시글 추천하기</a>
+{% endblock %}

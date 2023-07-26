@@ -1,31 +1,50 @@
 {% extends 'novel/base.html' %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     {% block title %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/list.css' %}">
         <meta charset="UTF-8">
-        <title>Title</title>
+        <title>만들어진 소설들</title>
     {% endblock %}
 </head>
 
 <body>
 {% block body %}
-    <table class="table">
-        <thead>
-        <tr>
-            <th>번호</th>
-            <th scope="col">내용</th>
-            <th>장르</th>
-        </tr>
-        </thead>
-    {% for novel in novels %}
+    <div id="list_table">
+        <table class="table">
+            <thead>
             <tr>
-                <td>{{ forloop.counter }}</td>
-                <td>{{ novel.answer_text | slice:":4" }}</td>
-                <td>{{ novel.novel_infor.genre }}</td>
+                <th>번호</th>
+                <th scope="col">내용</th>
+                <th>장르</th>
+                <th>크리에이터</th>
+                <th>날짜</th>
+                <th>댓글 수</th>
+                <th>추천</th>
+                <th>이미지</th>
             </tr>
-    {% endfor %}
-    </table>
+            </thead>
+            {% for novel in novels %}
+                <tr>
+                    <td><a href="{% url 'novel:novel_detail' novel.pk %}">{{ forloop.counter }}</a></td>
+                    <td><a href="{% url 'novel:novel_detail' novel.pk %}">{{ novel.answer_text | slice:":8" }}...</a>
+                    </td>
+                    <td><a href="{% url 'novel:novel_detail' novel.pk %}">{{ novel.novel_infor.genre }}</a></td>
+                    {% if novel.user.nickname %}
+                        <td>{{ novel.user.nickname }}</td>
+                    {% else %}
+                        <td>익명</td>
+                    {% endif %}
+                    <td>{{ novel.pub_date }}</td>
+                <td>{{ novel.comment_num }}</td>
+                    <td>{{ novel.recommend }}</td>
+                <td><img width="50px" height="50px" src="{{ novel.image }}"></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock %}
 </body>
 </html>

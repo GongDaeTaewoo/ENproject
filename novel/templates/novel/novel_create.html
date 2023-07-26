@@ -2,12 +2,14 @@
 {% extends 'novel/base.html' %}
 {% load django_bootstrap5 %}
 {% load static %}
+
 <html lang="en">
 
 <head>
     {% block title %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
         <meta charset="UTF-8">
-        <title>일단 시험</title>
+        <title>소설창조</title>
         <style>
             p#novel_answer {
                 font-family: Humanbumsuk;
@@ -33,11 +35,14 @@
             </button>
         </form>
         <p>주의:줄거리는 필수 입력사항입니다. <br>
-            등장인물을 설정하지 않으실려면 성별에서 등장시키지 않음을 선택해주세요.</p>
+            등장인물을 설정하지 않으실려면 성별에서 등장시키지 않음을 선택해주세요.<br>
+        사진은 줄거리를 바탕으로 생성됩니다.</p>
         <p id="novel_answer">
             {{ answer.answer_text }}
+
         </p>
     </div>
+    <p>개발:{{ story_e }}</p>
 {% endblock %}
 
 </html>

@@ -1,0 +1,25 @@
+{% extends 'novel/base.html' %}
+{% load django_bootstrap5 %}
+
+
+
+{% block title %}
+    <meta charset="UTF-8">
+    <style>
+      .right {
+            display: flex;
+            justify-content: right;
+        }
+    </style>
+    <title>ExcellentNovel 회원가입</title>
+{% endblock %}
+
+{% block body %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button class="btn btn-primary" type="submit">
+            회원가입
+        </button>
+    </form>
+{% endblock %}

@@ -1,0 +1,8 @@
+.right {
+    display: flex;
+    justify-content: right
+}
+
+#list_table a {
+    text-decoration: none;
+}
