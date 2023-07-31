@@ -1,14 +1,10 @@
 {% extends 'novel/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% block title %}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/list.css' %}">
-        <meta charset="UTF-8">
-        <title>만들어진 소설들</title>
-    {% endblock %}
-</head>
+
+{% block title %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/list.css' %}">
+    <title>만들어진 소설들</title>
+{% endblock %}
 
 <body>
 {% block body %}
@@ -38,9 +34,9 @@
                         <td>익명</td>
                     {% endif %}
                     <td>{{ novel.pub_date }}</td>
-                <td>{{ novel.comment_num }}</td>
+                    <td>{{ novel.comment_num }}</td>
                     <td>{{ novel.recommend }}</td>
-                <td><img width="50px" height="50px" src="{{ novel.image }}"></td>
+                    <td><img width="50px" height="50px" src="{{ novel.image }}"></td>
                 </tr>
             {% endfor %}
         </table>

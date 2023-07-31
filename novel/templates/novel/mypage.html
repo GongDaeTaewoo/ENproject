@@ -1,24 +1,27 @@
 {% extends 'novel/base.html' %}
+{% load static %}
 {% block title %}
-    <style>
-        .right {
-            display: flex;
-            justify-content: right;
-        }
-
-        a {
-            text-decoration: none;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mypage.css' %}">
     <title>{{ user.username }} 님의 페이지</title>
 {% endblock %}
 {% block body %}
-    <h1>{{ user.username }}({{ user.nickname }})</h1>
+    <div class="novel">
+        <h1>{{ user.username }}({{ user.nickname }})</h1>
 
-    {% for novel in my_novel %}
-        <h2>내가 만든 소설들</h2>
-        <a href="{% url 'novel:novel_detail' novel.pk %}"><p>{{ forloop.counter }}.{{ novel.novel_infor.story }}</p></a>
+        {% if my_novel %}
+            <div class="my_novel">
+                <h2>내가 만든 소설들</h2>
+                {% for novel in my_novel %}
 
-    {% endfor %}
-    <br>
+                    <a href="{% url 'novel:novel_detail' novel.pk %}">
+                        <p>{{ forloop.counter }}.{{ novel.novel_infor.story }}</p></a>
+
+                {% endfor %}
+            </div>
+        {% else %}
+
+            <h1 class="not_novel">아직 창조한 소설이 없습니다!</h1>
+        {% endif %}
+        <br>
+    </div>
 {% endblock %}

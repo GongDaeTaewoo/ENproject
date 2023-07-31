@@ -6,3 +6,10 @@
 #list_table a {
     text-decoration: none;
 }
+#list_table {
+    background-color: white;
+}
+
+body{
+    background-color: #fffef5;
+}
