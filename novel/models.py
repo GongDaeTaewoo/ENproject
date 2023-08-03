@@ -25,7 +25,6 @@ class MyUser(AbstractUser):
     nickname = models.CharField(max_length=10)
 
 class Novel(models.Model):
-
     answer_text = models.TextField(max_length=5000)
     novel_infor = models.OneToOneField(NovelInf, on_delete=models.CASCADE)
     recommend = models.IntegerField(default=0)

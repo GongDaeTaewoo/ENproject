@@ -36,7 +36,7 @@
                     <td>{{ novel.pub_date }}</td>
                     <td>{{ novel.comment_num }}</td>
                     <td>{{ novel.recommend }}</td>
-                    <td><img width="50px" height="50px" src="{{ novel.image }}"></td>
+                    <td><img width="50px" height="50px" src="{{ novel.image.url }}"></td>
                 </tr>
             {% endfor %}
         </table>

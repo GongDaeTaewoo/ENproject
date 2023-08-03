@@ -13,9 +13,6 @@ import os
 import environ
 from pathlib import Path
 
-
-
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,13 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-#시크릿키 숨기기
+# 시크릿키 숨기기
 env = environ.Env(DEBUG=(bool, True))
 environ.Env.read_env(
     env_file=os.path.join(BASE_DIR, '.env')
 )
 SECRET_KEY = env('SECRET_KEY')
-
 
 DEBUG = True
 
@@ -134,4 +130,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'novel.MyUser'
-LOGIN_URL='/login/'
+LOGIN_URL = '/login/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'openaidjango','static','image')
+MEDIA_URL = '/photo/'

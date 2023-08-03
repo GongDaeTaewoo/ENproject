@@ -14,8 +14,8 @@
 
 {% block body %}
     <h1>{{ novel.pk }} 번째 소설</h1>
-    <img src="{{ novel.image }}">
-    <img src="{{ novel.image2 }}">
+    <img src="{{ novel.image.url }}">
+    <img src="{{ novel.image2.url }}">
     <img src="{{ novel.image3 }}">
     <p>장르:{{ novel.novel_infor.genre }}</p>
 
