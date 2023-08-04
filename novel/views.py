@@ -164,7 +164,8 @@ def recommend(request, pk):
     novel = get_object_or_404(Novel, pk=pk)
     novel.recommend += 1
     novel.save()
-    return render(request, 'novel/novel_detail.html', {'novel': novel})
+    form = CommentForm()
+    return render(request, 'novel/novel_detail.html', {'novel': novel, 'form': form})
 
 
 def register(request):
